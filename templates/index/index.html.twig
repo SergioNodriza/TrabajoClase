@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Página principal{% endblock %}
+
+{% block body %}
+
+<div class="block">
+    <br>
+    <h1>Elige la opción</h1>
+    <hr><br>
+
+    <button type="button" onclick="window.location.href='{{ path('listar_vuelos') }}'">Lista Vuelos</button>
+    <button type="button" onclick="window.location.href='{{ path('clientes') }}'">Clientes</button>
+    <button type="button" onclick="window.location.href='{{ path('reservas') }}'">Lista Reservas</button>
+</div>
+{% endblock %}

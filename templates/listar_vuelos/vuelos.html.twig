@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Vuelos Disponibles{% endblock %}
+
+{% block body %}
+
+    {% if vuelos|length == 0 %}
+        <h3 class="centerText">No hay Vuelos Disponibles</h3>
+    {% else %}
+        <h3 class="centerText">Lista de Vuelos Disponibles</h3>
+
+        <table class="List">
+
+            <tr>
+                <th>Nombre</th>
+                <th>Aerolinea</th>
+                <th>Ciudad Salida</th>
+                <th>Fecha Salida</th>
+                <th>Ciudad Llegada</th>
+                <th>Fecha Llegada</th>
+            </tr>
+
+            {% for vuelo in vuelos %}
+                <tr>
+                    <td>{{ vuelo.nombre }}</td>
+                    <td>{{ vuelo.aerolinea }}</td>
+                    <td>{{ vuelo.ciudadSalida }}</td>
+                    <td>{{ vuelo.fechaSalida | format_datetime('short', 'none', locale='es')}}</td>
+                    <td>{{ vuelo.ciudadLlegada }}</td>
+                    <td>{{ vuelo.fechaLlegada | format_datetime('short', 'none', locale='es')}}</td>
+                 </tr>
+            {% endfor %}
+
+        </table>
+
+    {% endif %}
+
+    <br>
+    <center>
+        <button  type="button" onclick="window.location.href='{{ path('index') }}'">Volver</button>
+    </center>
+
+{% endblock %}

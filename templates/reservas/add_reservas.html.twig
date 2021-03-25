@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Añadir Reservas{% endblock %}
+
+{% block body %}
+
+    {% if clientes|length == 0 or vuelos|length == 0 %}
+        <h3 class="centerText">No hay datos suficientes</h3>
+    {% else %}
+
+        <h3 class="centerText">Añadir de Reservas</h3>
+
+        <form method="post">
+            <div class="centerText">
+                <br>
+                <label for="cliente">Elige el Cliente</label>
+                <select name="cliente" id="cliente">
+
+                    {% for cliente in clientes %}
+                        <option value="{{ cliente.id }}">{{ cliente.nombre }}</option>
+                    {% endfor %}
+
+                </select>
+
+                <br>
+
+                <label for="vuelo">Elige el Vuelo</label>
+                <select name="vuelo" id="vuelo">
+                    {% for vuelo in vuelos %}
+                        <option value="{{ vuelo.id }}">{{ vuelo.nombre }}</option>
+                    {% endfor %}
+                </select>
+
+                <br><br>
+
+                <div class="inlineLeft"><button type="submit">Añadir</button></div>
+                <div class="inlineBlock"><button  type="button" onclick="window.location.href='{{ path('reservas') }}'">Volver</button></div>
+            </div>
+        </form>
+
+    {% endif %}
+
+{% endblock %}

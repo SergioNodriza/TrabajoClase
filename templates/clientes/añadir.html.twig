@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Añadir Clientes{% endblock %}
+
+{% block body %}
+
+    <div class="centerText">
+
+        <h3>Rellenar datos</h3>
+
+        {# form(client_form) #}
+
+        <div class="inlineLeft">
+            {{ form_start(client_form) }}
+
+            {{ form_label(client_form.nombre) }}
+            {{ form_widget(client_form.nombre) }}
+            <br>
+            {{ form_label(client_form.apellidos) }}
+            {{ form_widget(client_form.apellidos) }}
+            <br>
+            <div class="inlineBlock">{{ form_label(client_form.fechaNacimiento) }}</div>
+            <div class="inlineBlock">{{ form_widget(client_form.fechaNacimiento) }}</div>
+            <br>
+            {{ form_label(client_form.domicilio) }}
+            {{ form_widget(client_form.domicilio) }}
+            <br>
+            {{ form_label(client_form.telefono) }}
+            {{ form_widget(client_form.telefono) }}
+        </div>
+
+        <br><br>
+        <div class="inlineBlock">{{ form_row(client_form.enviar) }}</div>
+        <div class="inlineBlock"><button  type="button" onclick="window.location.href='{{ path('clientes') }}'">Volver</button></div>
+        {{ form_end(client_form) }}
+    </div>
+
+{% endblock %}

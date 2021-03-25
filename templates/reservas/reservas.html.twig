@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listar Reservas{% endblock %}
+
+{% block body %}
+
+    {% if reservas|length == 0 %}
+        <h3 class="centerText">No hay Reservas</h3>
+    {% else %}
+
+        <h3 class="centerText">Lista de Reservas</h3>
+
+        <table class="List">
+
+            <tr>
+                <th>Reserva</th>
+                <th>Nombre Cliente</th>
+                <th>Nombre Vuelo</th>
+                <th>Fecha</th>
+            </tr>
+
+            {% for reserva in reservas %}
+                <tr>
+                    <td>{{ reserva.id }}</td>
+                    <td>{{ reserva.cliente.nombre }}</td>
+                    <td>{{ reserva.vuelo.nombre }}</td>
+                    <td>{{ reserva.fecha  | format_datetime('medium', 'none', locale='es')}}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+
+    {% endif %}
+
+    <br>
+    <center>
+        <button  type="button" onclick="window.location.href='{{ path('add_reservas') }}'">Añadir</button>
+        <button  type="button" onclick="window.location.href='{{ path('index') }}'">Volver</button>
+    </center>
+
+{% endblock %}
